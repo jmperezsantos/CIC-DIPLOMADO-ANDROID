@@ -4,6 +4,7 @@ package cic.ipn.mx.agendarestexample.fragments;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,6 +46,7 @@ public class ContactDetailFragment extends Fragment {
     private EditText etLastname;
     private EditText etPhone;
     private EditText etMail;
+    private TextInputLayout tilName;
 
     public static ContactDetailFragment newInstance(
             ContactModel contact
@@ -90,6 +92,8 @@ public class ContactDetailFragment extends Fragment {
         etLastname = view.findViewById(R.id.etLastname);
         etPhone = view.findViewById(R.id.etPhone);
         etMail = view.findViewById(R.id.etMail);
+        tilName = view.findViewById(R.id.tilName);
+
         Button btnDelete = view.findViewById(R.id.btnDelete);
         Button btnCreate = view.findViewById(R.id.btnCreate);
 
@@ -118,7 +122,7 @@ public class ContactDetailFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                if(contact != null){
+                if (contact != null) {
                     saveElement(true);
                 } else {
                     saveElement(false);
@@ -130,6 +134,13 @@ public class ContactDetailFragment extends Fragment {
     }
 
     private void saveElement(boolean isUpdate) {
+
+        if (etName.getText().toString().length() == 0) {
+            tilName.setError("Este campo no puede estar vacío");
+            return;
+        } else {
+            tilName.setError(null);
+        }
 
         try {
 
