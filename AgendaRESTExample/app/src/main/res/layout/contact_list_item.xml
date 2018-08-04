@@ -20,18 +20,18 @@
         android:text="Contact Lastname"
         android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/tvPhone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Contact Phone"
-        android:textSize="20sp" />
+    <!--<TextView-->
+        <!--android:id="@+id/tvPhone"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Contact Phone"-->
+        <!--android:textSize="20sp" />-->
 
-    <TextView
-        android:id="@+id/tvMail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Contact Mail"
-        android:textSize="20sp" />
+    <!--<TextView-->
+        <!--android:id="@+id/tvMail"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Contact Mail"-->
+        <!--android:textSize="20sp" />-->
 
 </LinearLayout>

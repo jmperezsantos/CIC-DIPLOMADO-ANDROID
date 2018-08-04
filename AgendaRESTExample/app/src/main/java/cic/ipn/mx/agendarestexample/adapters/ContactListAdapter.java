@@ -52,15 +52,15 @@ public class ContactListAdapter extends BaseAdapter {
 
         TextView tvName = reusableView.findViewById(R.id.tvName);
         TextView tvLastname = reusableView.findViewById(R.id.tvLastname);
-        TextView tvPhone = reusableView.findViewById(R.id.tvPhone);
-        TextView tvMail = reusableView.findViewById(R.id.tvMail);
+//        TextView tvPhone = reusableView.findViewById(R.id.tvPhone);
+//        TextView tvMail = reusableView.findViewById(R.id.tvMail);
 
         ContactModel contact = this.getItem(i);
 
         tvName.setText(contact.getName());
         tvLastname.setText(contact.getLastname());
-        tvPhone.setText(contact.getPhone());
-        tvMail.setText(contact.getMail());
+//        tvPhone.setText(contact.getPhone());
+//        tvMail.setText(contact.getMail());
 
         return reusableView;
     }

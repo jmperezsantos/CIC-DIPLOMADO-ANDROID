@@ -19,4 +19,13 @@ public class URLConstants {
     public static final String ALL_CONTACTS_URL =
             HOST + "/appdata/kid_SyExouGHX/Contacts";
 
+    public static final String DELETE_CONTACT_URL =
+            HOST + "/appdata/kid_SyExouGHX/Contacts/{CONTACT_ID}";
+
+    public static final String NEW_CONTACT_URL =
+            HOST + "/appdata/kid_SyExouGHX/Contacts";
+
+    public static final String UPDATE_CONTACT_URL =
+            HOST + "/appdata/kid_SyExouGHX/Contacts/{CONTACT_ID}";
+
 }
