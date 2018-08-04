@@ -1,18 +1,25 @@
 package cic.ipn.mx.agendarestexample.model;
 
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 public class ContactModel implements Serializable {
 
+    @SerializedName("_id")
     private String id;
 
+    @SerializedName("name")
     private String name;
 
+    @SerializedName("lastname")
     private String lastname;
 
+    @SerializedName("phone")
     private String phone;
 
+    @SerializedName("mail")
     private String mail;
 
     public ContactModel() {

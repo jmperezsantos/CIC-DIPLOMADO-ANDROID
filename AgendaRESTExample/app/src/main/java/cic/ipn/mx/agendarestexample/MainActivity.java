@@ -14,12 +14,14 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -65,7 +67,15 @@ public class MainActivity extends AppCompatActivity {
 
                                 Log.d(TAG, "Json: " + response);
 
-                                List<ContactModel> contacts = parseJson(response);
+                                /*List<ContactModel> contacts = parseJson(response);*/
+                                Gson gson = new Gson();
+                                ContactModel[] arrContacts =
+                                        gson.fromJson(response.toString(),
+                                                ContactModel[].class);
+
+                                List<ContactModel> contacts = Arrays.asList(arrContacts);
+
+                                String json = gson.toJson(contacts);
 
                                 updateList(contacts);
 
