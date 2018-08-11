@@ -41,7 +41,7 @@ import cic.ipn.mx.cameraexample.R;
 public class CameraFragment extends Fragment {
 
     private static int REQUEST_IMAGE_CAPTURE = 999;
-    private static int CAMERA_PERMISSION = 999;
+    private static int CAMERA_PERMISSION = 888;
 
     private File photoFile;
     private ImageView ivImage;
@@ -59,7 +59,6 @@ public class CameraFragment extends Fragment {
     public CameraFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -88,17 +87,22 @@ public class CameraFragment extends Fragment {
 
     private void takePhoto() {
 
-        if (ContextCompat.checkSelfPermission(this.getContext(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED) {
+        if (ContextCompat.checkSelfPermission(this.getContext(),
+                Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED) {
 
             String[] permissions = {Manifest.permission.CAMERA};
-            ActivityCompat.requestPermissions(this.getActivity(), permissions, CAMERA_PERMISSION);
+            ActivityCompat.requestPermissions(this.getActivity(),
+                    permissions,
+                    CAMERA_PERMISSION);
 
         } else {
 
 
-            Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            Intent takePictureIntent =
+                    new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             // Ensure that there's a camera activity to handle the intent
-            if (takePictureIntent.resolveActivity(this.getContext().getPackageManager()) != null) {
+            if (takePictureIntent
+                    .resolveActivity(this.getContext().getPackageManager()) != null) {
 
                 // Create the File where the photo should go
                 try {
@@ -116,7 +120,6 @@ public class CameraFragment extends Fragment {
 
                         startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
 
-
                     }
 
                 } catch (IOException ex) {
@@ -132,9 +135,11 @@ public class CameraFragment extends Fragment {
 
     private File createImageFile() throws IOException {
         // Create an image file name
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss")
+                .format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";
-        File storageDir = this.getContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File storageDir = this.getContext()
+                .getExternalFilesDir(Environment.DIRECTORY_PICTURES);
 
         File image = File.createTempFile(imageFileName, /* prefix */
                 ".jpg", /* suffix */
@@ -145,27 +150,36 @@ public class CameraFragment extends Fragment {
 
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
 
         if (requestCode == CAMERA_PERMISSION) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 this.takePhoto();
             } else {
-                Toast.makeText(this.getContext(), "No tienes permiso para sacar fotos", Toast.LENGTH_LONG).show();
+                Toast.makeText(this.getContext(),
+                        "No tienes permiso para sacar fotos",
+                        Toast.LENGTH_LONG).show();
             }
         }
 
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode,
+                                 int resultCode,
+                                 Intent data) {
 
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE &&
+                resultCode == Activity.RESULT_OK) {
 
             if (this.photoFile != null) {
 
-                Options bmOptions = new Options();
-                Bitmap bitmap = BitmapFactory.decodeFile(this.photoFile.getAbsolutePath(), bmOptions);
+                BitmapFactory.Options bmOptions = new Options();
+                Bitmap bitmap = BitmapFactory.decodeFile(
+                        this.photoFile.getAbsolutePath(),
+                        bmOptions);
 
                 this.ivImage.setImageBitmap(bitmap);
                 this.tvImagePath.setText(this.photoFile.getAbsolutePath());

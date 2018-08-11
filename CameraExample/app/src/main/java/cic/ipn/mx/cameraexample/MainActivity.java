@@ -18,7 +18,8 @@ public class MainActivity extends AppCompatActivity {
 
             Fragment fragment = CameraFragment.newInstance();
 
-            FragmentTransaction transaction = this.getSupportFragmentManager().beginTransaction();
+            FragmentTransaction transaction =
+                    this.getSupportFragmentManager().beginTransaction();
 
             transaction.add(R.id.container, fragment);
 
