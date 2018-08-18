@@ -13,10 +13,12 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
+
 
     private GoogleMap map;
 
@@ -25,7 +27,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final SupportMapFragment mapFragment = (SupportMapFragment) this.getSupportFragmentManager().findFragmentById(R.id.mfMap);
+        SupportMapFragment mapFragment =
+                (SupportMapFragment) this.getSupportFragmentManager()
+                        .findFragmentById(R.id.mfMap);
 
         mapFragment.getMapAsync(this);
 
@@ -90,8 +94,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(zocalo);
         markerOptions.title("Zócalo CDMX");
+        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.my_pin));
 
-        map.addMarker(markerOptions);
+        this.map.addMarker(markerOptions);
 
         this.map.moveCamera(CameraUpdateFactory.newLatLng(zocalo));
 
@@ -109,9 +114,12 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             ActivityCompat.requestPermissions(this, permissions, 999);
 
+        } else {
+
+            this.map.setMyLocationEnabled(enabled);
+
         }
 
-        this.map.setMyLocationEnabled(enabled);
 
     }
 
