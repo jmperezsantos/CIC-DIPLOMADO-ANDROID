@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView tvLatitud;
     private TextView tvLongitud;
+    private TextView tvAltitud;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         this.tvLatitud = this.findViewById(R.id.tvLatitud);
         this.tvLongitud = this.findViewById(R.id.tvLongitud);
+        this.tvAltitud = this.findViewById(R.id.tvAltitud);
 
         this.configureLocationManager();
     }
@@ -60,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
                             tvLatitud.setText("" + location.getLatitude());
                             tvLongitud.setText("" + location.getLongitude());
+                            tvAltitud.setText("" + location.getAltitude());
 
                         }
 

@@ -23,4 +23,12 @@
         android:text="Longitud"
         android:textSize="30sp" />
 
+    <TextView
+        android:id="@+id/tvAltitud"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#acff8e"
+        android:text="Altitud"
+        android:textSize="30sp" />
+
 </LinearLayout>
