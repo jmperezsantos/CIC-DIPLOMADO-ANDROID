@@ -1,0 +1,6 @@
+google:
+  firebase:
+    project-id: push-notification-exampl-b5b0f
+    url: https://fcm.googleapis.com/v1/projects/{PROJECT_ID}/messages:send
+    scope: https://www.googleapis.com/auth/firebase.messaging
+    service_account_file: classpath:google-service-account.json

@@ -20,7 +20,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
 
-
         Log.d("TAG", "From: " + remoteMessage.getFrom());
 
         // Check if message contains a data payload.
